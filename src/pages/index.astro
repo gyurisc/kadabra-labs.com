@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -29,13 +30,18 @@ const metadata = {
       { text: 'Our Services', href: '#services' },
     ]}
   >
-    <Fragment slot="title">We help businesses integrate AI into their workflows</Fragment>
+    <Fragment slot="title">AI that works for your business — not the other way around</Fragment>
 
     <Fragment slot="subtitle">
-      Kadabra Labs is a Budapest-based software consultancy specializing in AI integration, web development, and
-      workflow automation. We turn complex technology into simple, working solutions.
+      We are a Budapest-based consultancy that helps companies automate workflows, build modern web apps, and
+      integrate AI — with fixed pricing, fast delivery, and zero BS. Over 15 years of enterprise software experience.
     </Fragment>
   </Hero>
+
+  <Note
+    title="Why us?"
+    description="Fixed pricing · Fast delivery · 15+ years experience · AI-first approach"
+  />
 
   <!-- Features Widget *************** -->
 
