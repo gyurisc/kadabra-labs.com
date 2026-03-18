@@ -11,7 +11,7 @@ metadata:
   title:
     default: Kadabra Labs
     template: '%s — Kadabra Labs'
-  description: "AI integration & software development for businesses. Based in Budapest, Hungary."
+  description: "AI workflow automatizálás magyar vállalkozásoknak. Chatbotok, email feldolgozás, egyedi automatizálás — fix áron, 1-2 hét alatt."
   robots:
     index: true
     follow: true
@@ -33,7 +33,7 @@ i18n:
 
 apps:
   blog:
-    isEnabled: true
+    isEnabled: false
     postsPerPage: 6
 
     post:
