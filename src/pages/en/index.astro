@@ -1,0 +1,135 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Kadabra Labs — AI Workflow Automation',
+  ignoreTitleTemplate: true,
+};
+
+const headerData = {
+  links: [
+    { text: 'Services', href: '/en/#services' },
+    { text: 'How we work', href: '/en/#how-we-work' },
+    { text: 'EN', href: '/en' },
+    { text: 'HU', href: '/' },
+  ],
+  actions: [{ text: 'Free AI Discovery Call', href: 'https://cal.com/kadabralabs/15min', target: '_blank' }],
+};
+
+const footerData = {
+  links: [
+    {
+      title: 'Contact',
+      links: [{ text: 'hello@kadabra-labs.com', href: 'mailto:hello@kadabra-labs.com' }],
+    },
+  ],
+  secondaryLinks: [
+    { text: 'Terms', href: '/terms' },
+    { text: 'Privacy Policy', href: '/privacy' },
+  ],
+  socialLinks: [],
+  footNote: '© 2026 Kadabra Labs Kft. · Budapest, Hungary',
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header {...headerData} isSticky showToggleTheme />
+  </Fragment>
+  <Fragment slot="footer">
+    <Footer {...footerData} />
+  </Fragment>
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Free AI Discovery Call',
+        href: 'https://cal.com/kadabralabs/15min',
+        target: '_blank',
+      },
+    ]}
+  >
+    <Fragment slot="title">AI automation that saves your team hours every week</Fragment>
+
+    <Fragment slot="subtitle">
+      Kadabra Labs helps businesses automate real workflows with AI: incoming emails, documents, and tool-to-tool
+      processes. Led by Krisztian Gyuris in Budapest, with 15+ years of enterprise software experience.
+    </Fragment>
+  </Hero>
+
+  <Features
+    id="services"
+    tagline="Services"
+    title="What we build"
+    subtitle="Clear scope, fixed pricing, and practical automation that pays back quickly."
+    items={[
+      {
+        title: 'AI Assistant for your website (€1,500-3,000)',
+        description:
+          'A chatbot trained on your company knowledge base so visitors and customers get accurate answers instantly.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Email & Document Automation (€1,000-2,500)',
+        description:
+          'Automate incoming email workflows and extract data from invoices or contracts into the systems you already use.',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Custom Workflow Automation (€1,500-5,000)',
+        description:
+          'n8n and AI-powered integrations that connect your tools and remove repetitive manual steps across teams.',
+        icon: 'tabler:arrows-shuffle',
+      },
+    ]}
+  />
+
+  <Steps
+    id="how-we-work"
+    title="How we work"
+    items={[
+      {
+        title: 'Discovery Call',
+        description:
+          'We map your current process, pain points, and where automation will create measurable value first.',
+        icon: 'tabler:phone-call',
+      },
+      {
+        title: 'Proposal & Plan',
+        description: 'You get a clear proposal with scope, timeline, and fixed pricing before any build starts.',
+        icon: 'tabler:file-description',
+      },
+      {
+        title: 'Build & Deliver',
+        description: 'We build, test, and hand over a working automation with documentation and a smooth rollout.',
+        icon: 'tabler:tools',
+      },
+    ]}
+  />
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Free AI Discovery Call',
+        href: 'https://cal.com/kadabralabs/15min',
+        target: '_blank',
+        icon: 'tabler:phone',
+      },
+    ]}
+  >
+    <Fragment slot="title">Book a free AI Discovery Call</Fragment>
+
+    <Fragment slot="subtitle">
+      In 15 minutes, we'll map where AI automation can save you time and money — no strings attached.
+    </Fragment>
+  </CallToAction>
+</Layout>

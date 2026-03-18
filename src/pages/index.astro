@@ -1,179 +1,134 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Kadabra Labs — AI & Software Consulting',
+  title: 'Kadabra Labs — AI munkafolyamat automatizálás',
   ignoreTitleTemplate: true,
+};
+
+const headerData = {
+  links: [
+    { text: 'Szolgáltatások', href: '/#services' },
+    { text: 'Hogyan dolgozunk', href: '/#how-we-work' },
+    { text: 'EN', href: '/en' },
+    { text: 'HU', href: '/' },
+  ],
+  actions: [{ text: 'Ingyenes AI Konzultáció', href: 'https://cal.com/kadabralabs/15min', target: '_blank' }],
+};
+
+const footerData = {
+  links: [
+    {
+      title: 'Kapcsolat',
+      links: [{ text: 'hello@kadabra-labs.com', href: 'mailto:hello@kadabra-labs.com' }],
+    },
+  ],
+  secondaryLinks: [
+    { text: 'Felhasználási feltételek', href: '/terms' },
+    { text: 'Adatkezelési tájékoztató', href: '/privacy' },
+  ],
+  socialLinks: [],
+  footNote: '© 2026 Kadabra Labs Kft. · Budapest, Magyarország',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <Fragment slot="header">
+    <Header {...headerData} isSticky showToggleTheme />
+  </Fragment>
+  <Fragment slot="footer">
+    <Footer {...footerData} />
+  </Fragment>
 
   <Hero
     actions={[
       {
         variant: 'primary',
-        text: 'Book a Call',
+        text: 'Ingyenes AI Konzultáció',
         href: 'https://cal.com/kadabralabs/15min',
         target: '_blank',
       },
-      { text: 'Our Services', href: '#services' },
     ]}
   >
-    <Fragment slot="title">AI that works for your business — not the other way around</Fragment>
+    <Fragment slot="title">AI ami a cégedért dolgozik — nem fordítva</Fragment>
 
     <Fragment slot="subtitle">
-      We are a Budapest-based consultancy that helps companies automate workflows, build modern web apps, and
-      integrate AI — with fixed pricing, fast delivery, and zero BS. Over 15 years of enterprise software experience.
+      A Kadabra Labs cégeknek épít AI-alapú automatizmusokat: bejövő e-mailek, dokumentumok és üzleti folyamatok
+      gyorsítására. Krisztian Gyuris vezetésével, budapesti központtal, 15+ év vállalati szoftveres tapasztalattal.
     </Fragment>
   </Hero>
 
-  <Note
-    title="Why us?"
-    description="Fixed pricing · Fast delivery · 15+ years experience · AI-first approach"
-  />
-
-  <!-- Features Widget *************** -->
-
   <Features
     id="services"
-    tagline="Services"
-    title="What we do"
-    subtitle="From AI integration to full-stack development, we deliver solutions that work."
+    tagline="Szolgáltatások"
+    title="Miben segítünk"
+    subtitle="Jól körülhatárolt scope, fix árazás, és kézzelfogható üzleti eredmény."
     items={[
       {
-        title: 'AI Integration & Automation',
+        title: 'AI asszisztens a weboldaladra (€1,500-3,000)',
         description:
-          'We integrate AI into your existing business processes. From chatbots to document processing, we make AI work for you.',
+          'A céges tudásbázisodra tanított chatbot, ami gyors és pontos válaszokat ad az érdeklődőknek és ügyfeleknek.',
         icon: 'tabler:robot',
       },
       {
-        title: 'Web Application Development',
+        title: 'E-mail és dokumentum automatizálás (€1,000-2,500)',
         description:
-          'Modern web applications built with Next.js, React, and TypeScript. Fast, scalable, and maintainable.',
-        icon: 'tabler:code',
+          'Bejövő e-mailek feldolgozása, valamint számlák és szerződések adatkinyerése a meglévő rendszereidbe.',
+        icon: 'tabler:mail',
       },
       {
-        title: 'Workflow Automation',
+        title: 'Egyedi workflow automatizálás (€1,500-5,000)',
         description:
-          'Automate repetitive tasks with n8n, custom APIs, and integrations. Save hours every week.',
+          'n8n + AI integrációk, amelyek összekötik az eszközeidet és kiváltják az ismétlődő manuális lépéseket.',
         icon: 'tabler:arrows-shuffle',
-      },
-      {
-        title: 'Legacy System Modernization',
-        description:
-          '.NET and enterprise system modernization. We bring your existing software into the modern era.',
-        icon: 'tabler:refresh',
       },
     ]}
   />
 
-  <!-- Steps Widget ****************** -->
-
   <Steps
-    title="How we work"
+    id="how-we-work"
+    title="Hogyan dolgozunk"
     items={[
       {
-        title: 'Discovery Call',
-        description:
-          'We start with a free 15-minute call to understand your needs and see if we are a good fit.',
+        title: 'Ismerkedő hívás',
+        description: 'Átbeszéljük a jelenlegi folyamataidat, és azonosítjuk, hol hoz gyors nyereséget az automatizálás.',
         icon: 'tabler:phone-call',
       },
       {
-        title: 'Proposal & Plan',
-        description:
-          'We deliver a clear proposal with scope, timeline, and fixed pricing. No surprises.',
+        title: 'Ajánlat és terv',
+        description: 'Egyértelmű ajánlatot kapsz scope-pal, ütemezéssel és fix árral, rejtett tételek nélkül.',
         icon: 'tabler:file-description',
       },
       {
-        title: 'Build & Deliver',
-        description:
-          'We build iteratively, keeping you in the loop. You see progress every week.',
+        title: 'Fejlesztés és átadás',
+        description: 'Megépítjük, leteszteljük és működően átadjuk az automatizmust, dokumentációval együtt.',
         icon: 'tabler:tools',
       },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
     ]}
   />
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Latest from our blog"
-    information="Insights on AI, web development, and building software products."
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle=""
-    tagline="FAQ"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'What technologies do you work with?',
-        description:
-          '.NET, C#, React, Next.js, TypeScript, Python, Node.js, SQLite, PostgreSQL, MongoDB, Redis, Docker, Azure, and n8n for workflow automation.',
-      },
-      {
-        title: 'How much does a typical project cost?',
-        description:
-          'Projects typically range from €2,000 to €20,000 depending on scope. We always provide a fixed-price quote upfront after our discovery call.',
-      },
-      {
-        title: 'Do you work with international clients?',
-        description:
-          'Yes! We are based in Budapest, Hungary but work with clients across Europe and beyond. All communication is in English.',
-      },
-      {
-        title: 'What is your availability?',
-        description:
-          'We are typically available within 1-2 weeks. Book a free 15-minute call to discuss your project timeline.',
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Years Experience', amount: '15+' },
-      { title: 'Projects Delivered', amount: '50+' },
-      { title: 'Happy Clients', amount: '10+' },
-      { title: 'Average Rating', amount: '4.9' },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
 
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Book a Call',
+        text: 'Ingyenes AI Konzultáció',
         href: 'https://cal.com/kadabralabs/15min',
         target: '_blank',
         icon: 'tabler:phone',
       },
     ]}
   >
-    <Fragment slot="title">Ready to get started?</Fragment>
+    <Fragment slot="title">Foglalj egy ingyenes AI konzultációt</Fragment>
 
     <Fragment slot="subtitle">
-      Book a free 15-minute discovery call. No commitment, no pressure — just a conversation about your project.
+      15 perc alatt átbeszéljük, hol spórolhatsz időt és pénzt AI automatizálással.
     </Fragment>
   </CallToAction>
 </Layout>
