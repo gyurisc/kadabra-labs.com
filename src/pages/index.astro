@@ -1,138 +1,134 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Kadabra Labs - AI Workflow Automatizálás',
+  title: 'Kadabra Labs — AI munkafolyamat automatizálás',
   ignoreTitleTemplate: true,
+};
+
+const headerData = {
+  links: [
+    { text: 'Szolgáltatások', href: '/#services' },
+    { text: 'Hogyan dolgozunk', href: '/#how-we-work' },
+    { text: 'EN', href: '/en' },
+    { text: 'HU', href: '/' },
+  ],
+  actions: [{ text: 'Ingyenes AI Konzultáció', href: 'https://cal.com/kadabralabs/15min', target: '_blank' }],
+};
+
+const footerData = {
+  links: [
+    {
+      title: 'Kapcsolat',
+      links: [{ text: 'hello@kadabra-labs.com', href: 'mailto:hello@kadabra-labs.com' }],
+    },
+  ],
+  secondaryLinks: [
+    { text: 'Felhasználási feltételek', href: '/terms' },
+    { text: 'Adatkezelési tájékoztató', href: '/privacy' },
+  ],
+  socialLinks: [],
+  footNote: '© 2026 Kadabra Labs Kft. · Budapest, Magyarország',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <Fragment slot="header">
+    <Header {...headerData} isSticky showToggleTheme />
+  </Fragment>
+  <Fragment slot="footer">
+    <Footer {...footerData} />
+  </Fragment>
 
   <Hero
     actions={[
       {
         variant: 'primary',
-        text: 'Book a Call',
+        text: 'Ingyenes AI Konzultáció',
         href: 'https://cal.com/kadabralabs/15min',
         target: '_blank',
       },
     ]}
   >
-    <Fragment slot="title">Automatizáld a céged AI-val — heteken belül, nem hónapok alatt</Fragment>
+    <Fragment slot="title">AI ami a cégedért dolgozik — nem fordítva</Fragment>
 
     <Fragment slot="subtitle">
-      AI workflow automatizálás magyar vállalkozásoknak. Csökkentsd a manuális munkát, növeld a hatékonyságot. 15+
-      év szoftver tapasztalat, fix árazás.
+      A Kadabra Labs cégeknek épít AI-alapú automatizmusokat: bejövő e-mailek, dokumentumok és üzleti folyamatok
+      gyorsítására. Krisztian Gyuris vezetésével, budapesti központtal, 15+ év vállalati szoftveres tapasztalattal.
     </Fragment>
   </Hero>
-
-  <!-- Features Widget *************** -->
 
   <Features
     id="services"
     tagline="Szolgáltatások"
     title="Miben segítünk"
-    subtitle="Egyszerű, gyorsan bevezethető AI automatizálások, valós üzleti eredményekkel."
+    subtitle="Jól körülhatárolt scope, fix árazás, és kézzelfogható üzleti eredmény."
     items={[
       {
-        title: 'AI Chatbot a weboldaladra',
+        title: 'AI asszisztens a weboldaladra (€1,500-3,000)',
         description:
-          'Ügyfélszolgálati chatbot ami a céged tudásbázisából válaszol. Kevesebb email, gyorsabb válaszok, elégedettebb ügyfelek.',
-        icon: 'tabler:message-chatbot',
+          'A céges tudásbázisodra tanított chatbot, ami gyors és pontos válaszokat ad az érdeklődőknek és ügyfeleknek.',
+        icon: 'tabler:robot',
       },
       {
-        title: 'Email és dokumentum automatizálás',
+        title: 'E-mail és dokumentum automatizálás (€1,000-2,500)',
         description:
-          'Bejövő emailek feldolgozása, számlák, ajánlatkérések automatikus kategorizálása és feldolgozása.',
-        icon: 'tabler:mail-fast',
+          'Bejövő e-mailek feldolgozása, valamint számlák és szerződések adatkinyerése a meglévő rendszereidbe.',
+        icon: 'tabler:mail',
       },
       {
-        title: 'Egyedi workflow automatizálás',
+        title: 'Egyedi workflow automatizálás (€1,500-5,000)',
         description:
-          'Ismétlődő feladatok automatizálása n8n-nel és AI-val. Ami eddig órákat vett el, az percek alatt kész.',
+          'n8n + AI integrációk, amelyek összekötik az eszközeidet és kiváltják az ismétlődő manuális lépéseket.',
         icon: 'tabler:arrows-shuffle',
       },
     ]}
   />
 
-  <!-- Steps Widget ****************** -->
-
   <Steps
-    title="Így dolgozunk"
+    id="how-we-work"
+    title="Hogyan dolgozunk"
     items={[
       {
-        title: 'Ingyenes konzultáció',
-        description:
-          '15 perces beszélgetés, megértjük mit szeretnél automatizálni.',
+        title: 'Ismerkedő hívás',
+        description: 'Átbeszéljük a jelenlegi folyamataidat, és azonosítjuk, hol hoz gyors nyereséget az automatizálás.',
         icon: 'tabler:phone-call',
       },
       {
-        title: 'Ajánlat fix áron',
-        description:
-          'Pontos scope, határidő és ár. Nincs meglepetés.',
+        title: 'Ajánlat és terv',
+        description: 'Egyértelmű ajánlatot kapsz scope-pal, ütemezéssel és fix árral, rejtett tételek nélkül.',
         icon: 'tabler:file-description',
       },
       {
-        title: 'Elkészül 1-2 hét alatt',
-        description:
-          'Gyors delivery, heti demo. Nem hónapokig tartó projekt.',
+        title: 'Fejlesztés és átadás',
+        description: 'Megépítjük, leteszteljük és működően átadjuk az automatizmust, dokumentációval együtt.',
         icon: 'tabler:tools',
       },
     ]}
   />
 
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Gyakran Ismételt Kérdések"
-    subtitle=""
-    tagline="FAQ"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Mennyibe kerül?',
-        description:
-          'A projektek jellemzően 300.000 - 2.000.000 Ft között mozognak a scope-tól függően. Az első konzultáció után fix áras ajánlatot adunk.',
-      },
-      {
-        title: 'Mennyi idő alatt készül el?',
-        description:
-          'A legtöbb automatizálási projekt 1-2 hét alatt elkészül. Nem hónapokig tartó fejlesztés.',
-      },
-      {
-        title: 'Milyen cégeknek ajánljátok?',
-        description:
-          'Kis és közepes vállalkozásoknak akik manuális, ismétlődő feladatokat szeretnének automatizálni AI segítségével.',
-      },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Book a Call',
+        text: 'Ingyenes AI Konzultáció',
         href: 'https://cal.com/kadabralabs/15min',
         target: '_blank',
         icon: 'tabler:phone',
       },
     ]}
   >
-    <Fragment slot="title">Beszéljünk!</Fragment>
+    <Fragment slot="title">Foglalj egy ingyenes AI konzultációt</Fragment>
 
     <Fragment slot="subtitle">
-      Foglalj egy ingyenes 15 perces konzultációt. Semmi kötelezettség — csak egy beszélgetés arról, hogyan segíthet
-      az AI a cégednek.
+      15 perc alatt átbeszéljük, hol spórolhatsz időt és pénzt AI automatizálással.
     </Fragment>
   </CallToAction>
 </Layout>
