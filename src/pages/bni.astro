@@ -1,0 +1,114 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+
+// TODO: replace with the real cal.com event type ("<username>/<event-slug>")
+const calLink = 'kadabralabs/bni';
+
+const metadata = {
+  title: 'BNI 1-2-1 — Kadabra Labs',
+  ignoreTitleTemplate: true,
+  description: 'Foglalj egy 1-2-1 beszélgetést Gyuris Krisztiánnal.',
+  robots: { index: false, follow: false },
+};
+
+const headerData = {
+  links: [
+    { text: 'Időpontfoglalás', href: '/bni#booking' },
+    { text: 'Kadabra Labs', href: '/' },
+  ],
+  actions: [{ text: 'Időpontot foglalok', href: '/bni#booking' }],
+};
+
+const footerData = {
+  links: [
+    {
+      title: 'Kapcsolat',
+      links: [{ text: 'hello@kadabra-labs.com', href: 'mailto:hello@kadabra-labs.com' }],
+    },
+  ],
+  secondaryLinks: [
+    { text: 'Felhasználási feltételek', href: '/terms' },
+    { text: 'Adatkezelési tájékoztató', href: '/privacy' },
+  ],
+  socialLinks: [],
+  footNote: '© 2026 Kadabra Labs Kft. · Budapest, Magyarország',
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header {...headerData} isSticky showToggleTheme />
+  </Fragment>
+  <Fragment slot="footer">
+    <Footer {...footerData} />
+  </Fragment>
+
+  <!-- TODO: final copy for BNI members -->
+  <Hero
+    tagline="BNI"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Időpontot foglalok',
+        href: '/bni#booking',
+      },
+    ]}
+  >
+    <Fragment slot="title">Foglalj egy 1-2-1 beszélgetést</Fragment>
+
+    <Fragment slot="subtitle">
+      Válassz egy időpontot, add meg az adataidat, és a foglalás után e-mailben elküldöm az adatlapomat.
+    </Fragment>
+  </Hero>
+
+  <WidgetWrapper id="booking">
+    <Headline title="Időpontfoglalás" subtitle="Válassz egy neked megfelelő időpontot." />
+    <div id="cal-bni-inline" class="w-full min-h-[600px]"></div>
+  </WidgetWrapper>
+
+  <script is:inline define:vars={{ calLink }}>
+    // cal.com embed loader (official snippet, rewritten with rest params for eslint)
+    (function (C, A, L) {
+      const push = (api, args) => api.q.push(args);
+      C.Cal =
+        C.Cal ||
+        function (...args) {
+          const cal = C.Cal;
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q || [];
+            C.document.head.appendChild(C.document.createElement('script')).src = A;
+            cal.loaded = true;
+          }
+          if (args[0] === L) {
+            const api = function (...apiArgs) {
+              push(api, apiArgs);
+            };
+            const namespace = args[1];
+            api.q = api.q || [];
+            if (typeof namespace === 'string') {
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              push(cal.ns[namespace], args);
+              push(cal, ['initNamespace', namespace]);
+            } else push(cal, args);
+            return;
+          }
+          push(cal, args);
+        };
+    })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+    Cal('init', 'bni', { origin: 'https://cal.com' });
+    Cal.ns.bni('inline', {
+      elementOrSelector: '#cal-bni-inline',
+      calLink: calLink,
+      config: { layout: 'month_view' },
+    });
+    Cal.ns.bni('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+  </script>
+</Layout>
