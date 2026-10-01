@@ -3,6 +3,8 @@ title: 'Adatvédelmi tájékoztató'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
+_This privacy notice is available in Hungarian. For an English version, contact [hello@kadabra-labs.com](mailto:hello@kadabra-labs.com)._
+
 _Hatályos_: 2026. október 1.
 
 Ez a tájékoztató bemutatja, hogyan kezeli a Kadabra Labs Kft. a [kadabra-labs.com](https://www.kadabra-labs.com) weboldal látogatóinak, valamint az időpontot foglalók és a velünk kapcsolatba lépők személyes adatait. A tájékoztató az Európai Parlament és a Tanács (EU) 2016/679 rendelete (általános adatvédelmi rendelet, a továbbiakban: GDPR) és az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII. törvény (Infotv.) alapján készült.
